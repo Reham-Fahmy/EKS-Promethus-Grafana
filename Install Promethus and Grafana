@@ -29,6 +29,7 @@ Log in using admin as the username and prom-operatoras the password
 With this helm chart Prometheus data source will be added by default. You can verify as shown below:
 
 Click on Setting ->datasources
-# Import dashboard   >>  left side menu , press on the plus sign , choose import via grafana.com , add dashboard URL and press load 
+
+# Import dashboard   >>  left side menu , press on the plus sign , choose import via grafana.com , add dashboard URL https://grafana.com/grafana/dashboards/7249 and press load 
 
 # now you can choose the name of the name space as well as the resource you want to monitor like pod.
