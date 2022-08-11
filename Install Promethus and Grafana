@@ -1,0 +1,34 @@
+1-
+# Run PowerShell as an administrator and run the below command to install chocolatey
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+2-
+# Install helm
+choco install kubernetes-helm
+
+3-
+# Deploying Prometheus using Helm charts
+helm repo add stable https://charts.helm.sh/stable
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack
+kubectl get pods -l "release=prometheus"
+
+4-
+# Access the Prometheus url on the browser
+kubectl get pods
+kubectl port-forward prometheus-prometheus-kube-prometheus-prometheus-0 8000:9090
+# Open the browser to http://localhost:8000/targets
+# MONITORING METRICS USING GRAFANA DASHBOARDS
+kubectl get pods
+kubectl port-forward kube-prometheus-stack-1606233825-grafana-598d4d4bd6-r7pp5 8000:3000
+
+# Open the browser to http://localhost:8000/login
+Log in using admin as the username and prom-operatoras the password
+# Add Prometheus DataSource
+With this helm chart Prometheus data source will be added by default. You can verify as shown below:
+
+Click on Setting ->datasources
+# Import dashboard   >>  left side menu , press on the plus sign , choose import via grafana.com , add dashboard URL and press load 
+
+# now you can choose the name of the name space as well as the resource you want to monitor like pod.
