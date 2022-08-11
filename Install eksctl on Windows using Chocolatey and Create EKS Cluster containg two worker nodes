@@ -1,0 +1,20 @@
+Steps:
+1-
+# Run PowerShell as an administrator and run the below command to install chocolatey
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+2-
+# Install eksctl tool using chocolatey
+chocolatey install -y eksctl
+
+3-
+# Check the eksctl version 
+eksctl version
+
+4-
+# Check the credentials in  ~/.aws/credentials using cat
+ 
+5-
+# Create the EKS clusetr , the below command will create vpc, six subnets (three for each node in three AZ ), three security groups,IAM role, two instances, auto scaling group.
+eksctl create cluster –-name test-cluster –-version 1.22 –-region eu-central-1 –-nodegroup-name linux-nodes –-node-type t2.micro –-nodes 2
+
