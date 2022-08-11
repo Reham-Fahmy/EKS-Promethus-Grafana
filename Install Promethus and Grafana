@@ -32,4 +32,4 @@ Click on Setting ->datasources
 
 # Import dashboard   >>  left side menu , press on the plus sign , choose import via grafana.com , add dashboard URL https://grafana.com/grafana/dashboards/7249 , press load , choose promethus and import
 
-# now you can choose the name of the name space as well as the resource you want to monitor like pod.
+# now you can choose the name of the name space as well as the resource to monitor like pod.
